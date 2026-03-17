@@ -32,8 +32,7 @@ public class EmployeeServiceImp implements EmployeeService {
         if (dto.getPositionId() == null){
             throw new BadRequestException("Position ID is required");
         }
-        System.out.println("DeptId: " + dto.getDepartmentId());
-        System.out.println("PosId: " + dto.getPositionId());
+
         Employee employee = EmployeeMapper.toEntity(dto);
 
         Department department = dep_repo.findById(dto.getDepartmentId())

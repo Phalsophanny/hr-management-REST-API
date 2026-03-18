@@ -6,5 +6,5 @@ import lombok.Data;
 public class PositionResponseDTO {
     private long positionId;
     private String positionName;
-    private double baseSalary;
+    private Double baseSalary;
 }

@@ -12,6 +12,8 @@ import com.example.hr_management.repository.DepartmentRepository;
 import com.example.hr_management.repository.EmployeeRepository;
 import com.example.hr_management.repository.PositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -46,5 +48,17 @@ public class EmployeeServiceImp implements EmployeeService {
         employee.setPosition(position);
         emp_repo.save(employee);
         return EmployeeMapper.toDTO(employee);
+    }
+
+
+    @Override
+    public Page<EmployeeResponseDTO> getEmployees(int page,int size){
+        return emp_repo.findAll(PageRequest.of(page,size)).map(EmployeeMapper::toDTO);
+    }
+
+    @Override
+    public EmployeeResponseDTO getEmployeeById(Long id){
+        Employee e = emp_repo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Employee ID not found!"));
+        return EmployeeMapper.toDTO(e);
     }
 }

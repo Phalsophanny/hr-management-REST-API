@@ -19,6 +19,7 @@ public class EmployeeMapper {
 
     public static EmployeeResponseDTO toDTO(Employee e){
         EmployeeResponseDTO dto = new EmployeeResponseDTO();
+        dto.setEmployeeId(e.getEmployeeId());
         dto.setFirstName(e.getFirstName());
         dto.setLastName(e.getLastName());
         dto.setGender(e.getGender());

@@ -16,7 +16,7 @@ public class PositionMapper {
 
     public static PositionResponseDTO toDTO(Position pos){
         PositionResponseDTO dto = new PositionResponseDTO();
-
+        dto.setPositionId(pos.getPositionId());
         dto.setPositionName(pos.getPositionName());
         dto.setBaseSalary(pos.getBaseSalary());
 

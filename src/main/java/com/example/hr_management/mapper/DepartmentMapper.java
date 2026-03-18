@@ -18,7 +18,7 @@ public class DepartmentMapper {
 
     public static DepartmentResponseDTO toDTO(Department d){
         DepartmentResponseDTO dto = new DepartmentResponseDTO();
-
+        dto.setDepartmentId(d.getDepartmentId());
         dto.setDepartmentName(d.getDepartmentName());
         dto.setCreatedDate(d.getCreatedDate());
         return dto;

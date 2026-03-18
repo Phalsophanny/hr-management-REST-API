@@ -8,4 +8,5 @@ public class DepartmentResponseDTO {
     private long departmentId;
     private String departmentName;
     private Timestamp createdDate;
+    private Timestamp updatedDate;
 }

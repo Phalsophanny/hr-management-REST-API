@@ -1,7 +1,6 @@
 package com.example.hr_management.dto.employee;
 
 import lombok.Data;
-
 import java.time.LocalDate;
 @Data
 public class EmployeeRequestDTO {
@@ -13,4 +12,5 @@ public class EmployeeRequestDTO {
     private String email;
     private Long departmentId;
     private Long positionId;
+
 }

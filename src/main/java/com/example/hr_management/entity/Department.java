@@ -19,4 +19,6 @@ public class Department {
     @CreatedDate
     @Column(updatable = false)
     private Timestamp createdDate;
+
+    private Timestamp updatedDate;
 }

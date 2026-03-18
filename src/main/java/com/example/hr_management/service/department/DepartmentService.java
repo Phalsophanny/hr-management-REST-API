@@ -8,4 +8,5 @@ public interface DepartmentService {
     DepartmentResponseDTO createDepartment(DepartmentRequestDTO dto);
     Page<DepartmentResponseDTO> getDepartments(int page,int size);
     DepartmentResponseDTO getDepartmentById(Long id);
+//    DepartmentResponseDTO updateDepartment(Long id, DepartmentRequestDTO dto);
 }

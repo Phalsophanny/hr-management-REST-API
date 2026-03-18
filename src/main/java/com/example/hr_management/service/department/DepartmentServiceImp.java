@@ -35,4 +35,14 @@ public class DepartmentServiceImp implements DepartmentService {
         return DepartmentMapper.toDTO(dep);
     }
 
+//    @Override
+//    public DepartmentResponseDTO updateDepartment(Long id,DepartmentRequestDTO dto){
+//
+//        Department dep = dep_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Department ID not found!"));
+//
+//        dto.setDepartmentName(dep.getDepartmentName());
+//
+//
+//    }
+
 }

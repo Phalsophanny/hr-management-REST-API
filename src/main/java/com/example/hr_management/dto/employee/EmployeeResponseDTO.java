@@ -2,6 +2,7 @@ package com.example.hr_management.dto.employee;
 
 import lombok.Data;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 @Data
 public class EmployeeResponseDTO  {
@@ -14,4 +15,6 @@ public class EmployeeResponseDTO  {
     private String email;
     private String departmentName;
     private String positionName;
+    private Timestamp createdDate;
+    private Timestamp updatedDate;
 }

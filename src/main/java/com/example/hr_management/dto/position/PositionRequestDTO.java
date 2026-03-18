@@ -7,4 +7,5 @@ public class PositionRequestDTO {
     private long positionId;
     private String positionName;
     private Double baseSalary;
+
 }

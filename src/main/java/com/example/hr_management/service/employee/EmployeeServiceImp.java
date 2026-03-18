@@ -46,8 +46,8 @@ public class EmployeeServiceImp implements EmployeeService {
 
         employee.setDepartment(department);
         employee.setPosition(position);
-        emp_repo.save(employee);
-        return EmployeeMapper.toDTO(employee);
+        Employee saved = emp_repo.save(employee);
+        return EmployeeMapper.toDTO(saved);
     }
 
 

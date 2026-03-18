@@ -2,12 +2,17 @@ package com.example.hr_management.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @Entity
-@Data
 @Table(name = "employees")
+@EntityListeners(AuditingEntityListener.class)
+@Data
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,80 +31,13 @@ public class Employee {
     private Position position;
 
 
-//    public Employee(){
-//
-//    }
-//    public long getId(){
-//        return employeeId;
-//    }
-//
-//    public void setId(long employeeId){
-//        this.employeeId = employeeId;
-//    }
-//
-//    public String getFirstName(){
-//        return firstName;
-//    }
-//
-//    public void setFirstName(String firstName){
-//        this.firstName = firstName;
-//    }
-//
-//    public String getLastName(){
-//        return lastName;
-//    }
-//
-//    public void setLastName(String lastName){
-//        this.lastName = lastName;
-//    }
-//
-//    public String getGender(){
-//        return gender;
-//    }
-//
-//    public void setGender(String gender){
-//        this.gender = gender;
-//    }
-//
-//    public LocalDate getDob(){
-//        return dob;
-//    }
-//
-//    public void setDoB(LocalDate dob){
-//        this.dob = dob;
-//    }
-//
-//    public String getPhone(){
-//        return phone;
-//    }
-//
-//    public void setPhone(String phone){
-//        this.phone = phone;
-//    }
-//
-//    public String getEmail(){
-//        return email;
-//    }
-//
-//    public void setEmail(String email){
-//        this.email = email;
-//    }
-//
-//
-//    public long getDepartmentId(){
-//        return departmentId;
-//    }
-//    public void setDepartmentId(long departmentId){
-//        this.departmentId = departmentId;
-//    }
-//
-//    public long getPosition(){
-//        return positionId;
-//    }
-//
-//    public void setPositionId(long positionId){
-//        this.positionId = positionId;
-//    }
-//
+    @CreatedDate
+    @Column(name = "created_date", updatable = false, nullable = false)
+    private Timestamp createdDate;
+
+    @LastModifiedDate
+    @Column(name = "updated_date")
+    private Timestamp updatedDate;
+
 
 }

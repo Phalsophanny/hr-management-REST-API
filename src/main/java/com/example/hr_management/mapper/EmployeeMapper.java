@@ -28,6 +28,8 @@ public class EmployeeMapper {
         dto.setEmail(e.getEmail());
         dto.setDepartmentName(e.getDepartment().getDepartmentName());
         dto.setPositionName(e.getPosition().getPositionName());
+        dto.setCreatedDate(e.getCreatedDate());
+        dto.setUpdatedDate(e.getUpdatedDate());
         return dto;
     }
 }

@@ -8,4 +8,5 @@ public interface EmployeeService {
     EmployeeResponseDTO createEmployee(EmployeeRequestDTO e);
     Page<EmployeeResponseDTO> getEmployees(int page,int size);
     EmployeeResponseDTO getEmployeeById(Long id);
+//    EmployeeResponseDTO updateEmployee(Long id, EmployeeRequestDTO dto);
 }

@@ -11,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+
 @Service
 public class DepartmentServiceImp implements DepartmentService {
 
@@ -35,14 +37,18 @@ public class DepartmentServiceImp implements DepartmentService {
         return DepartmentMapper.toDTO(dep);
     }
 
-//    @Override
-//    public DepartmentResponseDTO updateDepartment(Long id,DepartmentRequestDTO dto){
-//
-//        Department dep = dep_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Department ID not found!"));
-//
-//        dto.setDepartmentName(dep.getDepartmentName());
-//
-//
-//    }
+    @Override
+    public DepartmentResponseDTO updateDepartment(Long id,DepartmentRequestDTO dto){
+
+        Department dep = dep_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Department ID not found!"));
+
+        dep.setDepartmentName(dto.getDepartmentName());
+        dep.setUpdatedDate(new Timestamp(System.currentTimeMillis()));
+
+        Department update = dep_repo.save(dep);
+
+
+        return DepartmentMapper.toDTO(update);
+    }
 
 }

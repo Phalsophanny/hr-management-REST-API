@@ -21,4 +21,10 @@ public class Department {
     private Timestamp createdDate;
 
     private Timestamp updatedDate;
+
+    @Column(name="is_deleted")
+    private Boolean isDeleted = false;
+
+    private String deletedBy;
+    private Timestamp deletedDate;
 }

@@ -60,12 +60,17 @@ public class EmployeeServiceImp implements EmployeeService {
 
     @Override
     public EmployeeResponseDTO getEmployeeById(Long id){
+
         Employee e = emp_repo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Employee ID not found!"));
         return EmployeeMapper.toDTO(e);
     }
 
     @Override
     public EmployeeResponseDTO updateEmployee(Long id,EmployeeRequestDTO dto){
+        if(id == null){
+            throw new BadRequestException("Employee ID required.");
+        }
+
         Employee emp = emp_repo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Employee ID not found!"));
 
         emp.setFirstName(dto.getFirstName());

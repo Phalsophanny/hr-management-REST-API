@@ -30,6 +30,9 @@ public class Employee {
     @JoinColumn(name = "position_id")
     private Position position;
 
+    @Column(name = "is_deleted")
+    private Boolean isDeleted = false;
+
 
     @CreatedDate
     @Column(name = "created_date", updatable = false, nullable = false)

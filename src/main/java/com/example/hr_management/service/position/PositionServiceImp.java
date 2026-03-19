@@ -3,6 +3,7 @@ package com.example.hr_management.service.position;
 import com.example.hr_management.dto.position.PositionRequestDTO;
 import com.example.hr_management.dto.position.PositionResponseDTO;
 import com.example.hr_management.entity.Position;
+import com.example.hr_management.exception.BadRequestException;
 import com.example.hr_management.exception.ResourceNotFoundException;
 import com.example.hr_management.mapper.PositionMapper;
 import com.example.hr_management.repository.PositionRepository;
@@ -38,6 +39,9 @@ public class PositionServiceImp implements PositionService{
 
     @Override
     public PositionResponseDTO updatePosition(Long id,PositionRequestDTO dto){
+        if(id == null){
+            throw new BadRequestException("Position ID required.");
+        }
         Position pos = pos_repo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Position ID not Found!"));
 
         pos.setPositionName(dto.getPositionName());

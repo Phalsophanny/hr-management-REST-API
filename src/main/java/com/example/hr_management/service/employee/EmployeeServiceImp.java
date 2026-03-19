@@ -16,6 +16,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+
 @Service
 public class EmployeeServiceImp implements EmployeeService {
 
@@ -62,5 +64,28 @@ public class EmployeeServiceImp implements EmployeeService {
         return EmployeeMapper.toDTO(e);
     }
 
+    @Override
+    public EmployeeResponseDTO updateEmployee(Long id,EmployeeRequestDTO dto){
+        Employee emp = emp_repo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Employee ID not found!"));
+
+        emp.setFirstName(dto.getFirstName());
+        emp.setLastName(dto.getLastName());
+        emp.setGender(dto.getGender());
+        emp.setDob(dto.getDob());
+        emp.setPhone(dto.getPhone());
+        emp.setEmail(dto.getEmail());
+
+        Department dep = dep_repo.findById(dto.getDepartmentId()).orElseThrow(()-> new ResourceNotFoundException("Department ID not Found!"));
+        Position pos = pos_repo.findById(dto.getPositionId()).orElseThrow(()-> new ResourceNotFoundException("Position ID not found!"));
+
+        emp.setDepartment(dep);
+        emp.setPosition(pos);
+        emp.setUpdatedDate(new Timestamp(System.currentTimeMillis()));
+
+        Employee update = emp_repo.save(emp);
+
+
+        return EmployeeMapper.toDTO(update);
+    }
 
 }

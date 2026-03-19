@@ -11,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+
 @Service
 public class PositionServiceImp implements PositionService{
     @Autowired
@@ -32,6 +34,19 @@ public class PositionServiceImp implements PositionService{
     public PositionResponseDTO getPositionById(Long id){
         Position pos = pos_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Position ID not found!"));
         return PositionMapper.toDTO(pos);
+    }
+
+    @Override
+    public PositionResponseDTO updatePosition(Long id,PositionRequestDTO dto){
+        Position pos = pos_repo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Position ID not Found!"));
+
+        pos.setPositionName(dto.getPositionName());
+        pos.setBaseSalary(dto.getBaseSalary());
+        pos.setUpdatedDate(new Timestamp(System.currentTimeMillis()));
+
+        Position update = pos_repo.save(pos);
+
+        return PositionMapper.toDTO(update);
     }
 
 }

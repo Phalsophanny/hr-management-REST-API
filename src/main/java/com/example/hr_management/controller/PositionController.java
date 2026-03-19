@@ -27,4 +27,9 @@ public class PositionController {
     public PositionResponseDTO getPositionById(@PathVariable Long id){
         return service.getPositionById(id);
     }
+
+    @PutMapping("/{id}")
+    public PositionResponseDTO updatePosition(@PathVariable Long id,@RequestBody PositionRequestDTO dto){
+        return service.updatePosition(id,dto);
+    }
 }

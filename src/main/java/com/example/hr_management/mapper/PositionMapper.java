@@ -19,7 +19,7 @@ public class PositionMapper {
         dto.setPositionName(pos.getPositionName());
         dto.setBaseSalary(pos.getBaseSalary());
         dto.setCreatedDate(pos.getCreatedDate());
-        dto.setCreatedDate(pos.getCreatedDate());
+        dto.setUpdatedDate(pos.getUpdatedDate());
         return dto;
 
     }

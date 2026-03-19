@@ -8,4 +8,5 @@ public interface PositionService {
     PositionResponseDTO createPosition(PositionRequestDTO dto);
     Page<PositionResponseDTO> getPositions(int page,int size);
     PositionResponseDTO getPositionById(Long id);
+    PositionResponseDTO updatePosition(Long id,PositionRequestDTO dto);
 }

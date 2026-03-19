@@ -29,5 +29,10 @@ public class EmployeeController {
         return emp_service.getEmployeeById(id);
     }
 
+    @PutMapping("/{id}")
+    public EmployeeResponseDTO updateEmployee(@PathVariable Long id,@RequestBody EmployeeRequestDTO dto){
+        return emp_service.updateEmployee(id,dto);
+    }
+
 
 }
